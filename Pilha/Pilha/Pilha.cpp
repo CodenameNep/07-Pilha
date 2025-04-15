@@ -85,15 +85,28 @@ void push()
 
 	cout << "Digite o elemento: ";
 	cin >> novo->valor;
-	novo->prox = NULL;
+	novo->prox = topo;
 
-
+	topo = novo;
 }
 
 void pop()
 {
+	if (topo == NULL) {
+		cout << "Lista vazia! ";
+			return;
+	}
 
+	if (topo->prox == NULL) {
+		free(topo);
+		topo = NULL;
+		return;
+	}
 	
+	NO* aux = topo;
+
+	topo = topo->prox;
+	free(aux);
 
 }
 
